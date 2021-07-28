@@ -103,9 +103,8 @@ let result = document.getElementById("resultado").onclick = function(){         
         document.getElementById("topOp").innerHTML="☹";
         setTimeout(ac, 4000);
     }else if(arrayPreCalc.toString().length > 9){
-        let bigNum = arredondamos.format(arrayPreCalc[0]);
-        document.getElementById("topResultado").innerHTML=bigNum.substring(0,9)+"...";
-        document.getElementById("topPrev").innerHTML=arredondamos.format(arrayPreCalc[0]);
+        prevs(arrayPreCalc[0]);
+        document.getElementById("topResultado").innerHTML=arredondamos.format(arrayPreCalc[0]);
         }  
     tipoDeCalc = null;
 };                                                                                                              
@@ -136,7 +135,7 @@ let initClickInOp = function(){                                                 
         document.getElementById("topOp").innerHTML=" ";
         document.getElementById("topPrev").innerHTML="0";
         tipoDeCalc = null;
-    }
+    };
 };
 
 let insertVal = function(){                                                                 //Inserção de valores e obtenção do resultado após calculos
@@ -151,7 +150,7 @@ let insertVal = function(){                                                     
 let insertValVisual = function(){                                                           //Se o arrayPreCalc[0] for undefined, a máquina começa com zero
     if(arrayPreCalc[0] === undefined){
         insertVal();
-        document.getElementById("topPrev").innerHTML=arredondamos.format(arrayPreCalc[0])  //De outra forma-> insere os valores e devolve o resultado após calculos
+        prevs(arrayPreCalc[0])                                                              //De outra forma-> insere os valores e devolve o resultado após calculos
     }else{
         insertVal();
     }     
@@ -164,7 +163,7 @@ let corte = function(){                                                         
         document.getElementById("topOp").innerHTML=" ";
         setTimeout(ac, 4000);
     }else if(arrayPreCalc.toString().length > 9){
-        document.getElementById("topPrev").innerHTML=arredondamos.format(arrayPreCalc[0]);
+        prevs(arrayPreCalc[0]);
     }
 }  
 
@@ -186,28 +185,34 @@ let funcMulti = function(){                                                     
     let mt = arrayPreCalc[0] * arrayPreCalc[1];
     arrayPreCalc.splice(0, 2);
     arrayPreCalc.push(mt);
-    document.getElementById("topPrev").innerHTML=arredondamos.format(mt);
+    prevs(mt);
 };
 
-let funcDivi = function(){                                                                  //Divisão                               
+let funcDivi = function(){                                                                  //Divisão
+    if(arrayPreCalc[1] === 0){
+        arrayPreCalc[0] = 0;
+        document.getElementById("topPrev").innerHTML= "Cannot divide by zero!"
+        setTimeout(ac, 4000);
+    }else{                               
     let dv = arrayPreCalc[0] / arrayPreCalc[1];
     arrayPreCalc.splice(0, 2);
     arrayPreCalc[0] = dv;
-    document.getElementById("topPrev").innerHTML=arredondamos.format(dv);
+    prevs(dv);
+    }
 };
 
 let funcSoma = function(){                                                                  //Soma    
     let sm = arrayPreCalc[0] + arrayPreCalc[1];
     arrayPreCalc.splice(0, 2);
     arrayPreCalc[0] = sm;
-    document.getElementById("topPrev").innerHTML=arredondamos.format(sm);
+    prevs(sm);
 };
 
 let funcSubt = function(){                                                                  //Subtração
     let sb = arrayPreCalc[0] - arrayPreCalc[1];
     arrayPreCalc.splice(0, 2);
     arrayPreCalc[0] = sb;
-    document.getElementById("topPrev").innerHTML=arredondamos.format(sb);
+    prevs(sb);
 };
 
 let pop9th = function(){                                                                //Corte no nono dígito inserido
@@ -222,3 +227,13 @@ let arredondamos = new Intl.NumberFormat('en-US', {                             
     minimumFractionDigits: 0,      
     maximumFractionDigits: 4,
  });
+
+let arredondamos6Dec = new Intl.NumberFormat('en-US', {                                     //arredondamentos com precisão a 6 decimas
+    minimumFractionDigits: 0,      
+    maximumFractionDigits: 6,
+ });
+
+let prevs = function(prevVal){
+    let bigNum = arredondamos6Dec.format(prevVal);
+    document.getElementById("topPrev").innerHTML=bigNum.substring(0,9)+"...";
+};
