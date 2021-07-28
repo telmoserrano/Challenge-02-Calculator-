@@ -1,4 +1,4 @@
-# Challenge-02-Calculator-
+# Challenge 02 Calculator
 
 Hi there fellows!
 
