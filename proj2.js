@@ -94,18 +94,26 @@ let result = document.getElementById("resultado").onclick = function(){         
         return false;
     }else{
         resultado();
+        if(arrayPreCalc[1] === 0 && tipoDeCalc === "divi"){
+            return false;
+        }else{
         document.getElementById("topResultado").innerHTML=arredondamos.format(arrayPreCalc[0]);
         document.getElementById("topOp").innerHTML=" ";
-    };                                                      
+        }
+    };      
+
     if(arrayPreCalc[0] > Number.MAX_SAFE_INTEGER || arrayPreCalc[0] < Number.MIN_SAFE_INTEGER){     //If statement de Corte
         document.getElementById("topPrev").innerHTML="ERROR! (Max number size)";
         document.getElementById("topResultado").innerHTML="ERROR!";
         document.getElementById("topOp").innerHTML="☹";
         setTimeout(ac, 4000);
-    }else if(arrayPreCalc.toString().length > 9){
+    }else{
         prevs(arrayPreCalc[0]);
-        document.getElementById("topResultado").innerHTML=arredondamos.format(arrayPreCalc[0]);
-        }  
+        if(arrayPreCalc[0].toString().length > 13){
+            let bigNum = arredondamos.format(arrayPreCalc[0]);
+            document.getElementById("topResultado").innerHTML=bigNum.substring(0,13);
+        }
+    }; 
     tipoDeCalc = null;
 };                                                                                                              
 
@@ -160,7 +168,7 @@ let corte = function(){                                                         
     if(arrayPreCalc[0] > Number.MAX_SAFE_INTEGER || arrayPreCalc[0] < Number.MIN_SAFE_INTEGER){
         document.getElementById("topPrev").innerHTML="ERROR! (Max number size)";
         document.getElementById("topResultado").innerHTML="ERROR!";
-        document.getElementById("topOp").innerHTML=" ";
+        document.getElementById("topOp").innerHTML="☹";
         setTimeout(ac, 4000);
     }else if(arrayPreCalc.toString().length > 9){
         prevs(arrayPreCalc[0]);
@@ -176,9 +184,7 @@ let resultado = function(){                                                     
         funcSoma();
     }else if(tipoDeCalc === "subt" && arrayPreCalc[1] != null){
         funcSubt();
-    }else if(arrayPreCalc[1] === undefined){
-        document.getElementById("topResultado").innerHTML=arredondamos.format(arrayPreCalc[0]);
-    }       
+    }    
 };                                                                                                                        
 
 let funcMulti = function(){                                                                 //Multiplicação
@@ -191,7 +197,8 @@ let funcMulti = function(){                                                     
 let funcDivi = function(){                                                                  //Divisão
     if(arrayPreCalc[1] === 0){
         arrayPreCalc[0] = 0;
-        document.getElementById("topPrev").innerHTML= "Cannot divide by zero!"
+        document.getElementById("topPrev").innerHTML= "Cannot divide by zero!";
+        document.getElementById("topOp").innerHTML="☹";
         setTimeout(ac, 4000);
     }else{                               
     let dv = arrayPreCalc[0] / arrayPreCalc[1];
@@ -228,12 +235,17 @@ let arredondamos = new Intl.NumberFormat('en-US', {                             
     maximumFractionDigits: 4,
  });
 
-let arredondamos6Dec = new Intl.NumberFormat('en-US', {                                     //arredondamentos com precisão a 6 decimas
+let arredondamos6Dec = new Intl.NumberFormat('en-US', {                                     //arredondamentos com precisão a 8 decimas
     minimumFractionDigits: 0,      
     maximumFractionDigits: 6,
  });
 
 let prevs = function(prevVal){
-    let bigNum = arredondamos6Dec.format(prevVal);
-    document.getElementById("topPrev").innerHTML=bigNum.substring(0,9)+"...";
+    if(prevVal.toString().length > 15){
+        let bigNum = arredondamos6Dec.format(prevVal);
+        document.getElementById("topPrev").innerHTML=bigNum.substring(0,20)+"...";
+    }else{
+        let bigNum = arredondamos6Dec.format(prevVal);
+        document.getElementById("topPrev").innerHTML=bigNum.substring(0,20);
+    }
 };
