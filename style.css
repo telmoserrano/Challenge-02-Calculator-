@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Tourney:wght@200&display=swap');
+
+.body{      /*Utiliza-se o body que é para ser geral e aplicar-se à página toda*/
+    
+    background-image: url(https://1.bp.blogspot.com/-J8iTrpIWg54/XkuCYVr5URI/AAAAAAAANzc/FR9bu1icH98WffWiVfFqQLgTGz16Bw5WgCLcBGAsYHQ/s1920/Soft%2BGradient%2BBackground.jpg);
+    /*background-image: dá para definir a imagem de fundo. Se quisermos ir buscá-la a partir de um url basta fazer url()*/
+
+    background-size: cover;         /*Especifica o tamanho da imagem*/
+    background-attachment: fixed;   /*O background fica fixo independentemente de mexermos a página para cima ou para baixo*/
+
+     /*background-position: ;          /*Específica a posição do fundo. dá para escolher bottom left ou center right, etc, e move a imagem para esse sitio*/
+     /*background-repeat: no-repeat;   /*Backgound repeat dá para definir o tipo de repetição da imagem. Nest caso "no repeat" faz com que a imagem não se repita.*/
+}
+
+.contentor{
+    position: absolute;                 /*Posicionamento fixo com top e left a 50% faz com que o ponto to topo esquerdo do elemento fique sempre centrado na página*/
+    top: 50%;                       
+    left: 50%;
+    margin-top: -225px;                 /*Tem que se subtrair o topo e */
+    margin-left: -175px;
+    width: 350px;                   
+    height: 450px;  
+}
+
+.calc_corpo{
+    background-color: whitesmoke;
+    position: inherit;              /* inherit -> tem em conta o elemento parent, neste caso "contentor"*/
+    bottom: 0px;                    /* considera o bottom, daí estar "colado ao fundo*/
+    width: 350px;                   
+    height: 360px;
+}
+
+.calc_top{
+    background-color: rgba(0, 0, 0, .5); /* rgba ajuda a definir a opacidade de um elemento sem passar para o seu children. .5 define a percentagem de 0 a 1 -> Neste caso é 50%*/
+    position: inherit;
+    top: 0px;
+    width: 350px;
+    height: 90px;
+    /*opacity: 50%;                   /*opacity vai definir a percentagem de opacidade do elemento. que já não é necessário pois ja foi definido a opacidade no background color com o rgba() .5 */
+}
+
+.butoes {
+    position: inherit;
+    height: 66px;
+    text-align: center;
+    font-size: 22px;
+    font-family: Comfortaa;
+    font-weight: bold;
+    color: rgb(37, 37, 37);
+    line-height: 68px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+.tecAC{
+    position: inherit; 
+    background-color: rgb(176, 229, 245);        
+    top: 5px; 
+    left: 5px;                   
+    width: 167.5px;
+    height: 66px;                   
+}
+
+.tecDEL{
+    position: inherit; 
+    background-color: rgb(176, 229, 245);          
+    top: 5px; 
+    left: 177.5px;                   
+    width: 81.25px;
+    height: 66px;         
+}
+
+
+.divi{
+    background-color: rgb(255, 221, 176);             
+    top: 5px; 
+    right: 5px;                   
+    width: 81.25px;                  
+}
+
+.tec1{
+    background-color: rgb(117, 203, 230);           
+    top: 76px; 
+    left: 5px;                   
+    width: 81.25px;                
+}
+
+.tec2{
+    background-color: rgb(117, 203, 230);             
+    top: 76px; 
+    left: 91.25px;                   
+    width: 81.25px;                  
+}
+
+.tec3{
+    background-color: rgb(117, 203, 230);              
+    top: 76px; 
+    right: 91.25px;                   
+    width: 81.25px;                   
+}
+
+.mult{
+    background-color: rgb(255, 221, 176);              
+    top: 76px; 
+    right: 5px;                   
+    width: 81.25px;              
+}
+
+.tec4{
+    background-color: rgb(117, 203, 230);             
+    top: 147px; 
+    left: 5px;                   
+    width: 81.25px;                 
+}
+
+.tec5{
+    background-color: rgb(117, 203, 230);              
+    top: 147px; 
+    left: 91.25px;                   
+    width: 81.25px;                   
+}
+
+.tec6{
+    background-color: rgb(117, 203, 230);             
+    top: 147px; 
+    right: 91.25px;                   
+    width: 81.25px;                   
+}
+
+.soma{
+    background-color: rgb(255, 221, 176);             
+    top: 147px; 
+    right: 5px;                   
+    width: 81.25px;                   
+}
+
+.tec7{
+    background-color: rgb(117, 203, 230);             
+    bottom: 76px; 
+    left: 5px;                   
+    width: 81.25px;                   
+}
+
+.tec8{
+    background-color: rgb(117, 203, 230);              
+    bottom: 76px; 
+    left: 91.25px;                   
+    width: 81.25px;                   
+}
+
+.tec9{
+    background-color: rgb(117, 203, 230);             
+    bottom: 76px; 
+    right: 91.25px;                   
+    width: 81.25px;                   
+}
+
+.subt{
+    background-color: rgb(255, 221, 176);             
+    bottom: 76px; 
+    right: 5px;                   
+    width: 81.25px;                   
+}
+
+.tecDOT{
+    background-color: rgb(176, 229, 245);              
+    bottom: 5px; 
+    left: 5px;                   
+    width: 81.25px;                   
+}
+
+.tec0{
+    background-color: rgb(117, 203, 230);     
+    bottom: 5px; 
+    left: 91.25px;                   
+    width: 81.25px;           
+}
+
+.tecEQ{
+    background-color: rgb(255, 236, 172);             
+    bottom: 5px; 
+    right: 5px;                   
+    width: 167.5px;                   
+}
+
+.tec1:hover, .tec1:hover, .tec2:hover, .tec3:hover, .tec4:hover, .tec5:hover, .tec6:hover, .tec7:hover, .tec8:hover, .tec9:hover, .tec0:hover{
+    background-color: rgb(36, 154, 190);
+}
+
+.tecAC:hover, .tecDEL:hover, .tecDOT:hover{
+    background-color: rgb(99, 202, 233);
+}
+
+.divi:hover, .mult:hover, .soma:hover, .subt:hover{
+    background-color: rgb(255, 191, 108);
+}
+
+.tecEQ:hover{
+    background-color: rgb(255, 217, 94);
+}
+
+.tec1:active, .tec2:active, .tec3:active, .tec4:active, .tec5:active, .tec6:active, .tec7:active, .tec8:active, .tec9:active, .tec0:active, .tecAC:active, .tecDEL:active, .tecDOT:active, .tecEQ:active, .soma:active, .divi:active, .multi:active, .subt:active{
+    background-color: rgb(255, 255, 255);
+}                                                       /*:active define o que acontece quando o botão é clicado*/
+
+.res{
+    color: white;
+    position: inherit;
+    bottom: 5px;
+    right: 10px;
+    font-size: 54px;
+}
+
+.op{
+    color: rgba(255, 255, 255, .8);
+    background-color: rgba(0, 0, 0, .4);
+    border-radius: 4px;
+    position: inherit;
+    text-align: center;
+    line-height: 15px;
+    top: 8px;
+    right: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    height: 18px;
+    width: 18px;
+}
+
+.prev{
+    color: rgba(255, 255, 255, .8);
+    position: inherit;
+    top: 1px;
+    right: 35px;
+    font-size: 27px;
+}
